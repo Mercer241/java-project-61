@@ -1,55 +1,25 @@
-package hexlet.code;
+package hexlet.code.games;
 
-import java.util.Scanner;
+import hexlet.code.Engine;
 import java.util.Random;
 
 public class Even {
-    private static final int ROUNDS_TO_WIN = 3;
-    private static final int MAX_NUMBER = 100;
+    private static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static void play() {
-        Scanner scanner = new Scanner(System.in);
-        playRounds(scanner);
-        scanner.close();
-    }
-
-    private static void playRounds(Scanner scanner) {
+    public static void start() {
+        String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
         Random random = new Random();
 
-        // Получаем имя игрока ОДИН РАЗ
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String playerName = scanner.nextLine();
-        System.out.println("Hello, " + playerName + "!");
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
+            int number = random.nextInt(100);
+            String question = Integer.toString(number);
+            String correctAnswer = isEven(number) ? "yes" : "no";
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-
-        for (int i = 0; i < ROUNDS_TO_WIN; i++) {
-            if (!playRound(scanner, random, playerName)) {
-                return;
-            }
+            roundsData[i][0] = question;
+            roundsData[i][1] = correctAnswer;
         }
 
-        System.out.println("Congratulations, " + playerName + "!");
-    }
-
-    private static boolean playRound(Scanner scanner, Random random, String playerName) {
-        int number = random.nextInt(MAX_NUMBER) + 1;
-        String correctAnswer = isEven(number) ? "yes" : "no";
-
-        System.out.println("Question: " + number);
-        System.out.print("Your answer: ");
-        String userAnswer = scanner.nextLine().toLowerCase();
-
-        if (!userAnswer.equals(correctAnswer)) {
-            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
-                    + correctAnswer + "'.");
-            System.out.println("Let's try again, " + playerName + "!");
-            return false;
-        }
-
-        System.out.println("Correct!");
-        return true;
+        Engine.run(DESCRIPTION, roundsData);
     }
 
     private static boolean isEven(int number) {
