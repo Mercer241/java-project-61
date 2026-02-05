@@ -10,8 +10,12 @@ public class App {
     public static String USER_NAME;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        printMenu();
+        int choice = getChoice();
+        runGame(choice);
+    }
 
+    private static void printMenu() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -19,9 +23,14 @@ public class App {
         System.out.println("4 - GCD");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
+    }
 
-        int choice = scanner.nextInt();
+    private static int getChoice() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
 
+    private static void runGame(int choice) {
         switch (choice) {
             case 0:
                 System.out.println("Goodbye!");
