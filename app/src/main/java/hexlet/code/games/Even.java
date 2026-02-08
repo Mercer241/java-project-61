@@ -5,13 +5,14 @@ import java.util.Random;
 
 public class Even {
     private static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final int MAX_NUMBER = 100;
 
     public static void start() {
         String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
         Random random = new Random();
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int number = random.nextInt(100) + 1;
+            int number = random.nextInt(MAX_NUMBER) + 1;
             String question = Integer.toString(number);
             String correctAnswer = isEven(number) ? "yes" : "no";
 

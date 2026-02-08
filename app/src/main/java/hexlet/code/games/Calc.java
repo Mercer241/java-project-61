@@ -6,14 +6,15 @@ import java.util.Random;
 public class Calc {
     private static final String DESCRIPTION = "What is the result of the expression?";
     private static final String[] OPERATIONS = {"+", "-", "*"};
+    private static final int MAX_NUMBER = 50;
 
     public static void start() {
         String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
         Random random = new Random();
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int a = random.nextInt(50) + 1; // от 1 до 50
-            int b = random.nextInt(50) + 1;
+            int a = random.nextInt(MAX_NUMBER) + 1; // от 1 до 50
+            int b = random.nextInt(MAX_NUMBER) + 1;
             String operation = OPERATIONS[random.nextInt(OPERATIONS.length)];
 
             String question = a + " " + operation + " " + b;

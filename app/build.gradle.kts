@@ -1,15 +1,6 @@
 plugins {
-    id("application")
-    id("checkstyle")
-    id("com.github.ben-manes.versions") version "0.51.0"
-    id("org.sonarqube") version "7.1.0.6387"
-}
-
-group = "hexlet.code"
-version = "1.0-SNAPSHOT"
-
-checkstyle {
-    toolVersion = "10.12.5"
+    application
+    checkstyle  // ← ДОБАВЬ ЭТУ СТРОКУ
 }
 
 application {
@@ -20,23 +11,7 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.getByName("run", JavaExec::class) {
-    standardInput = System.`in`
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "Mercer241_java-project-61")
-        property("sonar.organization", "mercer241")
-    }
+checkstyle {
+    toolVersion = "10.12.5"
+    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
 }

@@ -9,6 +9,13 @@ import hexlet.code.games.Prime;
 import java.util.Scanner;
 
 public class App {
+    private static final int MENU_GREET = 1;
+    private static final int MENU_EVEN = 2;
+    private static final int MENU_CALC = 3;
+    private static final int MENU_GCD = 4;
+    private static final int MENU_PROGRESSION = 5;
+    private static final int MENU_PRIME = 6;
+
     public static void main(String[] args) {
         printMenu();
         int choice = getChoice();
@@ -37,22 +44,22 @@ public class App {
             case 0:
                 System.out.println("Goodbye!");
                 break;
-            case 1:
+            case MENU_GREET:
                 Cli.greet();
                 break;
-            case 2:
+            case MENU_EVEN:
                 Even.start();
                 break;
-            case 3:
+            case MENU_CALC:
                 Calc.start();
                 break;
-            case 4:
+            case MENU_GCD:
                 Gcd.start();
                 break;
-            case 5:
+            case MENU_PROGRESSION:
                 Progression.start();
                 break;
-            case 6:
+            case MENU_PRIME:
                 Prime.start();
                 break;
             default:
