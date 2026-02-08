@@ -11,7 +11,7 @@ public class Even {
         Random random = new Random();
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int number = random.nextInt(100);
+            int number = random.nextInt(100) + 1;
             String question = Integer.toString(number);
             String correctAnswer = isEven(number) ? "yes" : "no";
 

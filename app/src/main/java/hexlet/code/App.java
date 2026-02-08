@@ -3,12 +3,11 @@ package hexlet.code;
 import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
 public class App {
-    public static String USER_NAME;
-
     public static void main(String[] args) {
         printMenu();
         int choice = getChoice();
@@ -21,6 +20,7 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
     }
@@ -36,7 +36,7 @@ public class App {
                 System.out.println("Goodbye!");
                 break;
             case 1:
-                greet();
+                Cli.greet();
                 break;
             case 2:
                 Even.start();
@@ -47,16 +47,11 @@ public class App {
             case 4:
                 Gcd.start();
                 break;
+            case 5:
+                Progression.start();
+                break;
             default:
                 System.out.println("Invalid choice!");
         }
-    }
-
-    private static void greet() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        USER_NAME = scanner.nextLine();
-        System.out.println("Hello, " + USER_NAME + "!");
     }
 }

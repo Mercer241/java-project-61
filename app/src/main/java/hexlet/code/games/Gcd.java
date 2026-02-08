@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Gcd {
-    private static final String DESCRIPTION = "Find the greatest common divisor of given numbers";
+    private static final String DESCRIPTION = "Find the greatest common divisor of given numbers.";
     private static final int MAX_NUMBER = 100;
 
     public static void start() {
@@ -31,6 +31,6 @@ public class Gcd {
             b = a % b;
             a = temp;
         }
-            return a;
+        return a;
     }
 }
