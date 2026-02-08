@@ -36,7 +36,20 @@ public class App {
 
     private static int getChoice() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+
+        try {
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                if (scanner.hasNextLine()) {
+                    scanner.nextLine();
+                }
+                return choice;
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     private static void runGame(int choice) {
