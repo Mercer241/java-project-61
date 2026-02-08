@@ -28,3 +28,80 @@ cd java-project-61/app
 3. **GCD** — наибольший общий делитель
 4. **Progression** — арифметическая прогрессия
 5. **Prime** — проверка на простое число
+
+## Примеры запуска игр
+
+### Игра "Prime" (Простое ли число?)
+
+```
+$ ./gradlew run
+Please enter the game number and press Enter.
+1 - Greet
+2 - Even
+3 - Calc
+4 - GCD
+5 - Progression
+6 - Prime
+0 - Exit
+Your choice: 6
+May I have your name? Alex
+Hello, Alex!
+Answer 'yes' if given number is prime. Otherwise answer 'no'.
+Question: 7
+Your answer: yes
+Correct!
+Question: 10
+Your answer: no
+Correct!
+Question: 13
+Your answer: yes
+Correct!
+Congratulations, Alex!
+```
+
+### Игра "Progression" (Арифметическая прогрессия)
+
+```
+$ ./gradlew run
+Please enter the game number and press Enter.
+1 - Greet
+2 - Even
+3 - Calc
+4 - GCD
+5 - Progression
+6 - Prime
+0 - Exit
+Your choice: 5
+May I have your name? Alex
+Hello, Alex!
+What number is missing in the progression?
+Question: 5 7 9 11 13 .. 17 19 21 23
+Your answer: 15
+Correct!
+Question: 2 5 8 .. 14 17 20 23 26 29
+Your answer: 11
+Correct!
+Question: 14 19 24 29 34 39 44 49 54 ..
+Your answer: 59
+Correct!
+Congratulations, Alex!
+```
+
+### Пример ошибки
+
+```
+Question: 5 7 9 11 13 .. 17 19 21 23
+Your answer: 12
+'12' is wrong answer ;(. Correct answer was '15'.
+Let's try again, Alex!
+```
+
+## Технологии
+- Java 17+
+- Gradle
+- Checkstyle
+- GitHub Actions
+- SonarCloud
+
+## Автор
+[Ваше имя]
