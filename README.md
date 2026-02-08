@@ -104,4 +104,4 @@ Let's try again, Alex!
 - SonarCloud
 
 ## Автор
-[Ваше имя]
+[Александр Приходько]
