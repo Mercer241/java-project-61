@@ -76,7 +76,7 @@ public class App {
                 Prime.start();
                 break;
             default:
-                System.out.println("Invalid choice!");
+                System.out.println("Unknown user choice: " + choice);
         }
     }
 }

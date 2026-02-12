@@ -1,8 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
-
+import hexlet.code.Utils;  // ← ДОБАВИТЬ
 
 public class Progression {
     private static final int MIN_LENGTH = 5;
@@ -12,8 +11,6 @@ public class Progression {
     private static final int MIN_STEP = 1;
     private static final int MAX_STEP = 10;
     private static final String DESCRIPTION = "What number is missing in the progression?";
-    private static final Random RANDOM = new Random();
-
 
     public static void start() {
         String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
@@ -26,40 +23,28 @@ public class Progression {
     }
 
     private static String[] generateRound() {
-        int length = generateNumber(MIN_LENGTH, MAX_LENGTH);
-        int start = generateNumber(MIN_START, MAX_START);
-        int step = generateNumber(MIN_STEP, MAX_STEP);
-        int hiddenPosition = generateNumber(0, length - 1);
+        int length = Utils.generateNumber(MIN_LENGTH, MAX_LENGTH);
+        int start = Utils.generateNumber(MIN_START, MAX_START);
+        int step = Utils.generateNumber(MIN_STEP, MAX_STEP);
+        int hiddenPosition = Utils.generateNumber(0, length - 1);
 
-        String progression = buildProgression(start, step, length, hiddenPosition);
-        int hiddenNumber = calculateHiddenNumber(start, step, hiddenPosition);
+        String question = buildProgression(start, step, length, hiddenPosition);
+        int hiddenNumber = start + hiddenPosition * step;
 
-        String question = progression.trim();
-        String answer = Integer.toString(hiddenNumber);
-
-        return new String[] {question, answer};
+        return new String[] {question, Integer.toString(hiddenNumber)};
     }
 
     private static String buildProgression(int start, int step, int length, int hiddenPosition) {
-        StringBuilder progression = new StringBuilder();
+        String[] progression = new String[length];
 
         for (int i = 0; i < length; i++) {
             if (i == hiddenPosition) {
-                progression.append(".. ");
+                progression[i] = "..";
             } else {
-                int currentNumber = start + i * step;
-                progression.append(currentNumber).append(" ");
+                progression[i] = Integer.toString(start + i * step);
             }
         }
 
-        return progression.toString();
-    }
-
-    private static int calculateHiddenNumber(int start, int step, int hiddenPosition) {
-        return start + hiddenPosition * step;
-    }
-
-    private static int generateNumber(int min, int max) {
-        return RANDOM.nextInt(max - min + 1) + min;
+        return String.join(" ", progression);
     }
 }

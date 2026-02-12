@@ -1,13 +1,12 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Prime {
     private static final String DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private static final int MIN_NUMBER = 2;
     private static final int MAX_NUMBER = 100;
-    private static final Random RANDOM = new Random();
 
     public static void start() {
         String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
@@ -20,7 +19,7 @@ public class Prime {
     }
 
     private static String[] generateRound() {
-        int number = generateNumber(MIN_NUMBER, MAX_NUMBER);
+        int number = Utils.generateNumber(MIN_NUMBER, MAX_NUMBER);
         String question = Integer.toString(number);
         String answer = isPrime(number) ? "yes" : "no";
 
@@ -39,9 +38,5 @@ public class Prime {
         }
 
         return true;
-    }
-
-    private static int generateNumber(int min, int max) {
-        return RANDOM.nextInt(max - min + 1) + min;
     }
 }

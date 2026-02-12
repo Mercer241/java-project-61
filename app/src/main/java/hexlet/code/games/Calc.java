@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Calc {
     private static final String DESCRIPTION = "What is the result of the expression?";
@@ -10,33 +10,29 @@ public class Calc {
 
     public static void start() {
         String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
-        Random random = new Random();
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            int a = random.nextInt(MAX_NUMBER) + 1; // от 1 до 50
-            int b = random.nextInt(MAX_NUMBER) + 1;
-            String operation = OPERATIONS[random.nextInt(OPERATIONS.length)];
+            int a = Utils.generateNumber(1, MAX_NUMBER);
+            int b = Utils.generateNumber(1, MAX_NUMBER);
+            String operation = OPERATIONS[Utils.generateNumber(0, OPERATIONS.length - 1)];
 
             String question = a + " " + operation + " " + b;
-            String correctAnswer = calculate(a, b, operation);
+            int correctAnswer = calculate(a, b, operation);
+            String correctAnswerStr = String.valueOf(correctAnswer);
 
             roundsData[i][0] = question;
-            roundsData[i][1] = correctAnswer;
+            roundsData[i][1] = correctAnswerStr;
         }
 
         Engine.run(DESCRIPTION, roundsData);
     }
 
-    private static String calculate(int a, int b, String operation) {
-        switch (operation) {
-            case "+":
-                return Integer.toString(a + b);
-            case "-":
-                return Integer.toString(a - b);
-            case "*":
-                return Integer.toString(a * b);
-            default:
-                throw new IllegalArgumentException("Unknown operation: " + operation);
+    private static int calculate(int num1, int num2, String operator) {
+        switch (operator) {
+            case "+": return num1 + num2;
+            case "-": return num1 - num2;
+            case "*": return num1 * num2;
+            default: return 0;
         }
     }
 }

@@ -25,3 +25,9 @@ sonar {
         property("sonar.scanner.skipJreProvisioning", "true")
     }
 }
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "hexlet.code.App"
+    }
+}
