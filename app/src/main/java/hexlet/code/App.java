@@ -40,15 +40,17 @@ public class App {
         try {
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
-                if (scanner.hasNextLine()) {
-                    scanner.nextLine();
-                }
+                // Очищаем буфер после ввода числа
+                scanner.nextLine();
                 return choice;
             } else {
-                return 0;
+                String input = scanner.nextLine();
+                throw new RuntimeException("Invalid input. Expected a number, but got: '" + input + "'");
             }
+        } catch (RuntimeException e) {
+            throw e;
         } catch (Exception e) {
-            return 0;
+            throw new RuntimeException("Error reading input: " + e.getMessage());
         }
     }
 

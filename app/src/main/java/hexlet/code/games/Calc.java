@@ -29,10 +29,14 @@ public class Calc {
 
     private static int calculate(int num1, int num2, String operator) {
         switch (operator) {
-            case "+": return num1 + num2;
-            case "-": return num1 - num2;
-            case "*": return num1 * num2;
-            default: return 0;
+            case "+":
+                return num1 + num2;
+            case "-":
+                return num1 - num2;
+            case "*":
+                return num1 * num2;
+            default:
+                throw new RuntimeException("Unknown operator: '" + operator + "'. Supported operators: +, -, *");
         }
     }
 }

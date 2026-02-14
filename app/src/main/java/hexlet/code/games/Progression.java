@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Utils;  // ← ДОБАВИТЬ
+import hexlet.code.Utils;
 
 public class Progression {
     private static final int MIN_LENGTH = 5;
@@ -28,23 +28,32 @@ public class Progression {
         int step = Utils.generateNumber(MIN_STEP, MAX_STEP);
         int hiddenPosition = Utils.generateNumber(0, length - 1);
 
-        String question = buildProgression(start, step, length, hiddenPosition);
-        int hiddenNumber = start + hiddenPosition * step;
+        int[] progression = generateProgression(start, step, length);
+
+        String question = hideElement(progression, hiddenPosition);
+
+        int hiddenNumber = progression[hiddenPosition];
 
         return new String[] {question, Integer.toString(hiddenNumber)};
     }
 
-    private static String buildProgression(int start, int step, int length, int hiddenPosition) {
-        String[] progression = new String[length];
-
+    private static int[] generateProgression(int start, int step, int length) {
+        int[] progression = new int[length];
         for (int i = 0; i < length; i++) {
+            progression[i] = start + i * step;
+        }
+        return progression;
+    }
+
+    private static String hideElement(int[] progression, int hiddenPosition) {
+        String[] result = new String[progression.length];
+        for (int i = 0; i < progression.length; i++) {
             if (i == hiddenPosition) {
-                progression[i] = "..";
+                result[i] = "..";
             } else {
-                progression[i] = Integer.toString(start + i * step);
+                result[i] = Integer.toString(progression[i]);
             }
         }
-
-        return String.join(" ", progression);
+        return String.join(" ", result);
     }
 }
